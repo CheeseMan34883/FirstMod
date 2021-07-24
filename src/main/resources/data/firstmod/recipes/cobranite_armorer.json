@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"DDD",
+		"NNN",
+		"CCC"
+	],
+	"key": {
+		"C": {
+			"item": "firstmod:cobranite"
+		},
+		"N": {
+			"item": "minecraft:netherite_ingot"
+		},
+		"D": {
+			"item": "firstmod:conducted_cobranite"
+		}
+	},
+	"result": {
+		"item": "firstmod:cobranite_armorer",
+		"count": 1
+	}
+}

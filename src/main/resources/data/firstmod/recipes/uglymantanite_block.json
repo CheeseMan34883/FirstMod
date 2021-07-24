@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"UUU",
+		"UUU",
+		"UUU"
+	],
+	"key": {
+		"U": {
+			"item": "firstmod:uglymantanite_ingot"
+		}
+	},
+	"result": {
+		"item": "firstmod:uglymantanite_block",
+		"count": 1
+	}
+}

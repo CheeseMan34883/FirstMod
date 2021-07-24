@@ -1,0 +1,7 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "firstmod:blocks/uglymantanite_block"
+	
+	}
+}

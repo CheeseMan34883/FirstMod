@@ -1,0 +1,14 @@
+{
+	"item.firstmod.example_item": "Red Sphere",
+	"item.firstmod.uglymantanite_ingot": "Uglymantanite Ingot",
+	"item.firstmod.uglymantanite_crust": "Uglymantanite Crust",
+	"block.firstmod.uglymantanite_block": "Uglymantanite Block",
+	"block.firstmod.uglymantanite_ore": "Uglymantanite Ore",
+	"block.firstmod.cobranite": "Cobranite",
+	"item.firstmod.conducted_cobranite": "Conducted Cobranite",
+	"block.firstmod.cobranite_armorer": "Cobranite Armorer",
+	"item.firstmod.example_food": "Example Food",
+	
+	
+	"itemGroup.first_mod": "First Mod Items"
+}

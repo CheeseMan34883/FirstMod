@@ -1,0 +1,20 @@
+{
+	"type": "firstmod:cobranite_armorer_recipe",
+	"input": {
+		"item": "firstmod:example_item"
+	},
+	"input1": {
+		"item": "minecraft:air"
+	},
+	"input2": {
+		"item": "minecraft:air"
+	},
+	"input3": {
+		"item": "minecraft:air"
+	},
+	"output": {
+		"item": "firstmod:example_food",
+		"count": 1
+	}
+
+}

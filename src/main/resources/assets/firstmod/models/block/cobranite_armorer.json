@@ -1,0 +1,11 @@
+{
+  "parent": "firstmod:customparents/custom_orientable",
+  "textures": {
+    "top": "firstmod:blocks/cobranite_armorer_top",
+    "front": "firstmod:blocks/cobranite_armorer_front",
+    "back": "firstmod:blocks/cobranite_armorer_side",
+    "sidee": "firstmod:blocks/cobranite_armorer_side",
+    "sidew": "firstmod:blocks/cobranite_armorer_side",
+    "bottom": "firstmod:blocks/cobranite_armorer_bottom"
+  }
+}

@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "firstmod:uglymantanite_ore"
+	},
+	"result": "firstmod:uglymantanite_crust",
+	"experience": 1.2,
+	"cookingtime": 100
+}

@@ -1,0 +1,24 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "firstmod:cobranite"
+		},
+		{
+			"item": "firstmod:cobranite"
+		},
+		{
+			"item": "firstmod:cobranite"
+		},
+		{
+			"item": "firstmod:cobranite"
+		},
+		{
+			"item": "firstmod:cobranite"
+		}
+	],
+	"result": {
+		"item": "firstmod:conducted_cobranite",
+		"count": 1
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"UDU",
+		"UDU",
+		"UDU"
+	],
+	"key": {
+		"U": {
+			"item": "firstmod:uglymantanite_crust"
+		},
+		"D": {
+			"item": "minecraft:diamond"
+		}
+	},
+	"result": {
+		"item": "firstmod:uglymantanite_ingot",
+		"count": 1
+	}
+}
