@@ -32,5 +32,11 @@ public class ItemInit {
 					.food(new Food.Builder().nutrition(4).saturationMod(1.2f)
 							.effect(new EffectInstance(Effects.REGENERATION, 200, 0), 1f)
 							.effect(new EffectInstance(Effects.SLOW_FALLING, 200, 0), 1f).build())));
+	public static final RegistryObject<Item> CRYOGENUS = ITEMS.register("cryogenus",
+			() -> new Item(new Item.Properties().tab(FirstModItemGroup.FIRST_MOD)));
+	
+	public static final RegistryObject<Item> ARTIFICIAL_BONE = ITEMS.register("artificial_bone",
+			() -> new Item(new Item.Properties().tab(FirstModItemGroup.FIRST_MOD)));
+	
 
 }

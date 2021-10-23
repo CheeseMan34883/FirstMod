@@ -1,6 +1,10 @@
 {
-	"variants": {
-		"": { "model": "firstmod:block/cobranite_armorer" }
-		
+"variants": {
+        "powered=true": {
+            "model": "firstmod:block/cobranite_armorer_on"
+        },
+        "powered=false": {
+            "model": "firstmod:block/cobranite_armorer"
+        }
 	}
 }

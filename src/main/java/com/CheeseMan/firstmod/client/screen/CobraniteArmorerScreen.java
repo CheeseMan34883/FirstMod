@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class CobraniteArmorerScreen extends ContainerScreen<CobraniteArmorerContainer> {
 
 	private static final ResourceLocation COBRANITE_ARMORER_GUI = new ResourceLocation(FirstMod.MOD_ID,
-			"textures/gui/cobranite_armorer.png");
+			"textures/gui/cobranite_armorer_gui.png");
 
 	public CobraniteArmorerScreen(CobraniteArmorerContainer screenContainer, PlayerInventory playerInv,
 			ITextComponent titleIn) {
@@ -50,6 +50,14 @@ public class CobraniteArmorerScreen extends ContainerScreen<CobraniteArmorerCont
 		int x = (this.width - this.imageWidth) / 2;
 		int y = (this.height - this.imageHeight) / 2;
 		this.blit(matrixStack, x, y, 0, 0, this.imageWidth, this.imageHeight);
+		if(menu.isPowered()){
+			this.blit(matrixStack, x + 72, y + 13, 177, 0, (int)(28*menu.getCounterPercentage()), 24);
+	            //System.out.println(menu.getCounterPercentage() + "|" + menu.getFuelCounterPercentage());
+
+	        }
+		int fuelGaugeHeight = (int)(67*menu.getFuelCounterPercentage());
+        if(menu.getFuelCounterPercentage() > 0)
+          this.blit(matrixStack, x + 146, y + 12 + 67 - fuelGaugeHeight, 178, 26, 23, fuelGaugeHeight);
 	}
 
 }

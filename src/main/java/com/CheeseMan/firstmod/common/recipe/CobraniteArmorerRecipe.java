@@ -1,6 +1,7 @@
 package com.CheeseMan.firstmod.common.recipe;
 
 import com.CheeseMan.firstmod.FirstMod;
+import com.CheeseMan.firstmod.common.te.CobraniteArmorerTileEntity;
 import com.CheeseMan.firstmod.core.init.ItemInit;
 import com.CheeseMan.firstmod.core.init.RecipeInit;
 import com.google.gson.JsonElement;
@@ -15,12 +16,11 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapedRecipe;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class CobraniteArmorerRecipe implements IRecipe<IInventory> {
+public class CobraniteArmorerRecipe implements IRecipe<CobraniteArmorerTileEntity> {
 
 	public static final Serializer SERIALIZER = new Serializer();
 
@@ -42,13 +42,18 @@ public class CobraniteArmorerRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public boolean matches(IInventory inv, World worldIn) {
-		return this.input.test(inv.getItem(0));
+	public boolean matches(CobraniteArmorerTileEntity inv, World world) {
+		if (inv.getContainerSize() == 6) {
+			return testInputs(inv, input) && testInputs(inv, input1) && testInputs(inv, input2)
+					&& testInputs(inv, input3);
+		}
+		return false;
 	}
 
 	@Override
-	public ItemStack assemble(IInventory inv) {
-		return this.output.copy();
+	public ItemStack assemble(CobraniteArmorerTileEntity p_77572_1_) {
+		// TODO Auto-generated method stub
+		return output.copy();
 	}
 
 	@Override
@@ -81,6 +86,14 @@ public class CobraniteArmorerRecipe implements IRecipe<IInventory> {
 		return true;
 	}
 
+	private boolean testInputs(CobraniteArmorerTileEntity tileEntity, Ingredient input) {
+		for (int i = 0; i < 4; i++) {
+			if (input.test(tileEntity.getItem(i)))
+				return true;
+		}
+		return false;
+	}
+
 	private static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>>
 			implements IRecipeSerializer<CobraniteArmorerRecipe> {
 		Serializer() {
@@ -91,12 +104,15 @@ public class CobraniteArmorerRecipe implements IRecipe<IInventory> {
 		public CobraniteArmorerRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 			final JsonElement inputEL = JSONUtils.isArrayNode(json, "input") ? JSONUtils.getAsJsonArray(json, "input")
 					: JSONUtils.getAsJsonObject(json, "input");
-			final JsonElement inputEL1 = JSONUtils.isArrayNode(json, "input1") ? JSONUtils.getAsJsonArray(json, "input1")
-                    : JSONUtils.getAsJsonObject(json, "input1");
-			final JsonElement inputEL2 = JSONUtils.isArrayNode(json, "input2") ? JSONUtils.getAsJsonArray(json, "input2")
-                    : JSONUtils.getAsJsonObject(json, "input2");
-			final JsonElement inputEL3 = JSONUtils.isArrayNode(json, "input3") ? JSONUtils.getAsJsonArray(json, "input3")
-                    : JSONUtils.getAsJsonObject(json, "input3");
+			final JsonElement inputEL1 = JSONUtils.isArrayNode(json, "input1")
+					? JSONUtils.getAsJsonArray(json, "input1")
+					: JSONUtils.getAsJsonObject(json, "input1");
+			final JsonElement inputEL2 = JSONUtils.isArrayNode(json, "input2")
+					? JSONUtils.getAsJsonArray(json, "input2")
+					: JSONUtils.getAsJsonObject(json, "input2");
+			final JsonElement inputEL3 = JSONUtils.isArrayNode(json, "input3")
+					? JSONUtils.getAsJsonArray(json, "input3")
+					: JSONUtils.getAsJsonObject(json, "input3");
 			final Ingredient input = Ingredient.fromJson(inputEL);
 			final Ingredient input1 = Ingredient.fromJson(inputEL1);
 			final Ingredient input2 = Ingredient.fromJson(inputEL2);
@@ -128,18 +144,6 @@ public class CobraniteArmorerRecipe implements IRecipe<IInventory> {
 			buffer.writeItem(recipe.output);
 		}
 
-		
-		}
-		public boolean isValid(ItemStack input, ItemStack input1, ItemStack input2, ItemStack input3) {
-			System.out.println(this.input.test(input));
-			return (this.input.test(input) || this.input1.test(input) || this.input2.test(input)
-                    || this.input3.test(input)) && (this.input.test(input1) || this.input1.test(input1) || this.input2.test(input1)
-                    || this.input3.test(input1)) && (this.input.test(input2) || this.input1.test(input2) || this.input2.test(input2)
-                    || this.input3.test(input2) && (this.input.test(input3) || this.input1.test(input3) || this.input2.test(input3)
-                    || this.input3.test(input3)));
-
-			
-			}
-		
 	}
 
+}

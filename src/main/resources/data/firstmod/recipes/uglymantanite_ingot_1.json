@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "firstmod:uglymantanite_block"
+		}
+	],
+	"result": {
+		"item": "firstmod:uglymantanite_ingot",
+		"count": 9
+	}
+}

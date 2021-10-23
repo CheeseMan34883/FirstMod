@@ -20,6 +20,9 @@ public class FeatureInit {
 
 		addOre(event, OreFeatureConfig.FillerBlockType.NATURAL_STONE,
 				BlockInit.COBRANITE.get().defaultBlockState(), 4, 7, 22, 5);
+		addOre(event, OreFeatureConfig.FillerBlockType.NETHERRACK,
+				BlockInit.CRYOGENUS_ORE.get().defaultBlockState(), 4, 7, 60, 9);
+		
 	}
 
 	public static void addOre(final BiomeLoadingEvent event, RuleTest rule, BlockState state, int veinSize,

@@ -4,17 +4,17 @@
 		"item": "firstmod:example_item"
 	},
 	"input1": {
-		"item": "minecraft:air"
+		"item": "minecraft:bone"
 	},
 	"input2": {
-		"item": "minecraft:air"
+		"item": "firstmod:example_item"
 	},
 	"input3": {
-		"item": "minecraft:air"
+		"item": "firstmod:example_item"
 	},
 	"output": {
 		"item": "firstmod:example_food",
-		"count": 1
+		"count": 3
 	}
 
 }

@@ -11,6 +11,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.state.StateContainer.Builder;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -27,9 +30,13 @@ public class CobraniteArmorer extends Block {
 		super(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_GRAY).strength(15f, 9f)
 				.sound(SoundType.METAL).harvestTool(ToolType.AXE).harvestLevel(0).sound(SoundType.METAL)
 				.requiresCorrectToolForDrops());
+		this.registerDefaultState(this.stateDefinition.any().setValue(BlockStateProperties.POWERED, false));
 
 	}
-
+	@Override
+    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
+        return state.getValue(BlockStateProperties.POWERED) ? 13 : 0;
+	}
 	@Override
 	public boolean hasTileEntity(BlockState state) {
 		return true;
@@ -51,5 +58,28 @@ public class CobraniteArmorer extends Block {
 		}
 		return ActionResultType.SUCCESS;
 	}
+	@Override
+    protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(BlockStateProperties.POWERED);
+    }
+	@Override
+	public void onRemove(BlockState state, World worldIn, BlockPos pos, BlockState oldState,
+			boolean isMoving) {
+		// code that drops items upon breaking TE
+		if(!state.is(oldState.getBlock())) {
+            TileEntity entity = worldIn.getBlockEntity(pos);
+            if(entity instanceof CobraniteArmorerTileEntity) {
+                CobraniteArmorerTileEntity tileEntity = (CobraniteArmorerTileEntity) entity;
+                InventoryHelper.dropContents(worldIn, pos, tileEntity);
+                worldIn.updateNeighbourForOutputSignal(pos, this);
+            }
+            
+        }
+		//makes sure the TE drops on breaking
+		super.onRemove(state, worldIn, pos, oldState, isMoving);
+		
+	}
+	
 
 }

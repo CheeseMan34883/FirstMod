@@ -13,26 +13,31 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIntArray;
 import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.util.IntReferenceHolder;
+import net.minecraftforge.common.ForgeHooks;
 
 public class CobraniteArmorerContainer extends Container {
 
 	public final CobraniteArmorerTileEntity te;
 	private final IWorldPosCallable canInteractWithCallable;
+	private IIntArray array = getIIntArray();
 	
 	public CobraniteArmorerContainer(final int windowId, final PlayerInventory playerInv, final CobraniteArmorerTileEntity te) {
 		super(ContainerTypesInit.COBRANITE_ARMORER_CONTAINER_TYPE.get(), windowId);
-		this.te = te;
+		this.te = te;		
 		this.canInteractWithCallable = IWorldPosCallable.create(te.getLevel(), te.getBlockPos());
 		
 		//Tile Entity 
-		this.addSlot(new Slot((IInventory) te, 0, 25, 8));
-		this.addSlot(new Slot((IInventory) te, 1, 45, 8));
-		this.addSlot(new Slot((IInventory) te, 2, 45, 27));
-		this.addSlot(new Slot((IInventory) te, 3, 25, 27));
-		this.addSlot(new Slot((IInventory) te, 4, 79, 58));
-		this.addSlot(new Slot((IInventory) te, 5, 115, 17) {
+		this.addSlot(new Slot(te, 0, 26, 9));
+		this.addSlot(new Slot(te, 1, 44, 9));
+		this.addSlot(new Slot(te, 2, 44, 27));
+		this.addSlot(new Slot(te, 3, 26, 27));
+		this.addSlot(new FuelSlot( te, 4, 79, 58));
+		this.addSlot(new Slot(te, 5, 115, 17) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return false;
@@ -52,7 +57,7 @@ public class CobraniteArmorerContainer extends Container {
 		for (int col = 0; col < 9; col++) {
 			this.addSlot(new Slot (playerInv, col, 8 + col * 18, 142));
 		}
-		
+		this.addDataSlots(this.array);
 		
 	}
 	public CobraniteArmorerContainer(final int windowId, final PlayerInventory playerInv, final PacketBuffer data) {
@@ -97,5 +102,77 @@ public class CobraniteArmorerContainer extends Container {
 		}
 		return stack;
 	}
+	public static class FuelSlot extends Slot{
 
-}
+        public FuelSlot(IInventory inventoryIn, int index, int xPosition, int yPosition) {
+            super(inventoryIn, index, xPosition, yPosition);
+        }
+        
+        @Override
+        public boolean mayPlace(ItemStack stack) {
+            return ForgeHooks.getBurnTime(stack) > 0;
+        }
+        
+    }
+	
+	public double getCounterPercentage() {
+        double counter = this.array.get(0);
+        if(counter == 0)
+          return 0d;
+        double maxCounter = CobraniteArmorerTileEntity.WORKING_TIME;
+        return 1d - (counter / maxCounter);
+    }
+	public double getFuelCounterPercentage() {
+        double fuelCounter = this.array.get(1);
+        double maxFuelCounter = this.array.get(2);
+        return fuelCounter / maxFuelCounter;
+    }
+	
+	public boolean isPowered(){
+        return te.getLevel().getBlockState(te.getBlockPos()).getValue(BlockStateProperties.POWERED);
+    }
+	private IIntArray getIIntArray() {
+		return new IIntArray() {
+			
+			@Override
+			public void set(int index, int value) {
+				switch(index){
+				  case 0:
+				    te.setCounter(value);
+				    break;
+				  case 1:
+				    te.setFuelCounter(value);
+				    break;
+				  case 2:
+				    te.setMaxFuelCounter(value);
+				     break;
+				  default:
+				    break;
+				}
+				
+			}
+			
+			@Override
+			public int getCount() {
+				// TODO Auto-generated method stub
+				return 3;
+			}
+			
+			@Override
+            public int get(int index) {
+                switch(index){
+                  case 0:
+                    return te.getCounter();
+                  case 1:
+                    return te.getFuelCounter();
+                  case 2:
+                    return te.getMaxFuelCounter();
+                  default:
+                      return 0;
+                }
+                
+            }
+			
+		};
+	}
+}	
