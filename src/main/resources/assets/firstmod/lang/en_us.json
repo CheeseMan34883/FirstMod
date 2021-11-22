@@ -2,16 +2,18 @@
 	"item.firstmod.example_item": "Red Sphere",
 	"item.firstmod.uglymantanite_ingot": "Uglymantanite Ingot",
 	"item.firstmod.uglymantanite_crust": "Uglymantanite Crust",
-	"block.firstmod.uglymantanite_block": "Uglymantanite Block",
+	"item.firstmod.conducted_cobranite": "Conducted Cobranite",
+	"item.firstmod.example_food": "Example Food",
+	"item.firstmod.cryogenus": "Cryogenus",
+	"item.firstmod.artificial_bone": "Artificial Bone",
+	
 	"block.firstmod.uglymantanite_ore": "Uglymantanite Ore",
 	"block.firstmod.cobranite": "Cobranite",
-	"item.firstmod.conducted_cobranite": "Conducted Cobranite",
 	"block.firstmod.cobranite_armorer": "Cobranite Armorer",
-	"item.firstmod.example_food": "Example Food",
 	"block.firstmod.cryogenus_ore": "Cryogenus Ore",
-	"item.firstmod.cryogenus": "Cryogenus",
 	"block.firstmod.cryogenus_block": "Cryogenus Block",
-	"item.firstmod.artificial_bone": "Artificial Bone",
+	"block.firstmod.uglymantanite_block": "Uglymantanite Block",
+	"block.firstmod.example_crop": "Example Seeds",
 	
 	"itemGroup.first_mod": "First Mod Items"
 }

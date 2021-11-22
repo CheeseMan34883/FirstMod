@@ -4,6 +4,7 @@ import com.CheeseMan.firstmod.FirstMod;
 import com.CheeseMan.firstmod.common.items.ConductedCobranite;
 import com.CheeseMan.firstmod.core.itemgroup.FirstModItemGroup;
 
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.potion.EffectInstance;
@@ -37,6 +38,9 @@ public class ItemInit {
 	
 	public static final RegistryObject<Item> ARTIFICIAL_BONE = ITEMS.register("artificial_bone",
 			() -> new Item(new Item.Properties().tab(FirstModItemGroup.FIRST_MOD)));
+	
+	public static final RegistryObject<Item> EXAMPLE_SEED = ITEMS.register("example_seed",
+			() -> new BlockItem(BlockInit.EXAMPLE_CROP.get(), new Item.Properties().tab(FirstModItemGroup.FIRST_MOD)));
 	
 
 }

@@ -3,6 +3,7 @@ package com.CheeseMan.firstmod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.CheeseMan.firstmod.common.block.ExampleCrop;
 import com.CheeseMan.firstmod.core.init.BlockInit;
 import com.CheeseMan.firstmod.core.init.ContainerTypesInit;
 import com.CheeseMan.firstmod.core.init.FeatureInit;
@@ -49,7 +50,7 @@ public class FirstMod {
 
 	@SubscribeEvent
 	public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
-		BlockInit.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
+		BlockInit.BLOCKS.getEntries().stream().filter(block -> !(block.get() instanceof ExampleCrop)).map(RegistryObject::get).forEach(block -> {
 			event.getRegistry().register(new BlockItem(block, new Item.Properties().tab(FirstModItemGroup.FIRST_MOD))
 					.setRegistryName(block.getRegistryName()));
 		});
