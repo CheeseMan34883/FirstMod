@@ -42,5 +42,8 @@ public class ItemInit {
 	public static final RegistryObject<Item> EXAMPLE_SEED = ITEMS.register("example_seed",
 			() -> new BlockItem(BlockInit.EXAMPLE_CROP.get(), new Item.Properties().tab(FirstModItemGroup.FIRST_MOD)));
 	
+	public static final RegistryObject<Item> GRAPES = ITEMS.register("grapes",
+			() -> new Item(new Item.Properties().tab(FirstModItemGroup.FIRST_MOD)));
+	
 
 }

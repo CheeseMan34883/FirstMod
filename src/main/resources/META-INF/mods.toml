@@ -3,12 +3,13 @@ loaderVersion="[36,)"
 license="MIT"
 [[mods]] 
 modId="firstmod" 
-version="${file.jarVersion}" 
-displayName="First Mod" 
+version="Beta 0.0" 
+displayName="FirstMod: Legend's Rise || Edition 1 of 3" 
 logoFile="examplemod.png" 
-credits="First Mod by CheeseMan" 
+credits="Code writer and leader: CheeseMan. Thanks to BretzelFresser and Zkryle for some advice and help. Also special thanks to TruePenut for some of the textures." 
 description='''
-First Mod of CheeseMan.
+The Legend's Rise begins here... Explore a world with vast new structures, blocks, and mobs including a new boss!
+				Will all fortunes eventually come to an end? Good luck and welcome to FirstMod!
 '''
 [[dependencies.firstmod]] 
     modId="forge" 

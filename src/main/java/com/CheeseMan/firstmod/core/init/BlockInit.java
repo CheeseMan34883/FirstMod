@@ -1,9 +1,11 @@
 package com.CheeseMan.firstmod.core.init;
 
 import com.CheeseMan.firstmod.FirstMod;
+import com.CheeseMan.firstmod.common.block.BlockDeferredRegister;
 import com.CheeseMan.firstmod.common.block.CobraniteArmorer;
 import com.CheeseMan.firstmod.common.block.CryogenusOre;
 import com.CheeseMan.firstmod.common.block.ExampleCrop;
+import com.CheeseMan.firstmod.common.block.GrapeVines;
 import com.CheeseMan.firstmod.common.block.UglymantaniteOre;
 
 import net.minecraft.block.AbstractBlock;
@@ -20,6 +22,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class BlockInit {
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
 			FirstMod.MOD_ID);
+	public static final BlockDeferredRegister CUSTOM = new BlockDeferredRegister(FirstMod.MOD_ID);
 
 	public static final RegistryObject<Block> UGLYMANTANITE_BLOCK = BLOCKS.register("uglymantanite_block",
 			() -> new Block(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_GRAY).strength(35f, 1200f)
@@ -46,7 +49,15 @@ public class BlockInit {
 					.requiresCorrectToolForDrops()));
 	
 	public static final RegistryObject<Block> EXAMPLE_CROP = BLOCKS.register("example_crop",
-			() -> new ExampleCrop((AbstractBlock.Properties.copy(Blocks.WHEAT))));
+			() -> new ExampleCrop((AbstractBlock.Properties.copy(Blocks.WHEAT).sound(SoundType.CROP))));
+	
+	public static final RegistryObject<Block> GRAPE_VINES = BLOCKS.register("grape_vines",
+			() -> new GrapeVines((AbstractBlock.Properties.of(Material.PLANT).sound(SoundType.VINE).instabreak())));
+	
+	
+
+	
+	
 	
 
 }

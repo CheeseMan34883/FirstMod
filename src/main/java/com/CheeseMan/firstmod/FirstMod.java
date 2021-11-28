@@ -3,6 +3,7 @@ package com.CheeseMan.firstmod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.CheeseMan.firstmod.common.block.BlockDeferredRegister;
 import com.CheeseMan.firstmod.common.block.ExampleCrop;
 import com.CheeseMan.firstmod.core.init.BlockInit;
 import com.CheeseMan.firstmod.core.init.ContainerTypesInit;
@@ -44,8 +45,10 @@ public class FirstMod {
 		
 		ContainerTypesInit.CONTAINER_TYPES.register(bus);
 		TileEntityTypesInit.TILE_ENTITY_TYPE.register(bus);
+		BlockInit.CUSTOM.register(bus);
 		MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, FeatureInit::addOres);
 		MinecraftForge.EVENT_BUS.register(this);
+		
 	}
 
 	@SubscribeEvent
